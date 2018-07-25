@@ -13,22 +13,26 @@ source:
     - osx_remove_manual_test.patch  # [osx]
 
 build:
-  skip: true  # [win]
   number: 1
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - make
-    - autoconf
+    - make  # [unix]
+    - autoconf  # [unix]
+    - cmake  # [win]
+    - ninja  # [win]
 
 test:
   commands:
-    - test -f "${PREFIX}/lib/liblog4cpp.a"
-    - test -f "${PREFIX}/lib/liblog4cpp.la"
-    - test -f "${PREFIX}/lib/liblog4cpp${SHLIB_EXT}"
-    - log4cpp-config --help
+    - test -f "${PREFIX}/include/log4cpp/Category.hh"  # [unix]
+    - test -f "${PREFIX}/lib/liblog4cpp.a"  # [unix]
+    - test -f "${PREFIX}/lib/liblog4cpp.la"  # [unix]
+    - test -f "${PREFIX}/lib/liblog4cpp${SHLIB_EXT}"  # [unix]
+    - if not exist %PREFIX%\\Library\\include\\log4cpp\\Category.hh exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\lib\\log4cpp.lib exit 1  # [win]
+    - log4cpp-config --help  # [not win]
     - conda inspect linkages -p $PREFIX log4cpp  # [not win]
     - conda inspect objects -p $PREFIX log4cpp  # [osx]
 
