@@ -13,7 +13,7 @@ source:
     - osx_remove_manual_test.patch  # [osx]
 
 build:
-  number: 1
+  number: 1001
 
 requirements:
   build:
