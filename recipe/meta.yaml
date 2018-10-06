@@ -28,7 +28,6 @@ test:
   commands:
     - test -f "${PREFIX}/include/log4cpp/Category.hh"  # [unix]
     - test -f "${PREFIX}/lib/liblog4cpp.a"  # [unix]
-    - test -f "${PREFIX}/lib/liblog4cpp.la"  # [unix]
     - test -f "${PREFIX}/lib/liblog4cpp${SHLIB_EXT}"  # [unix]
     - if not exist %PREFIX%\\Library\\include\\log4cpp\\Category.hh exit 1  # [win]
     - if not exist %PREFIX%\\Library\\lib\\log4cpp.lib exit 1  # [win]
