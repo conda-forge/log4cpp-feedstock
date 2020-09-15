@@ -1,14 +1,14 @@
-From b7a4741257dfb18fc0198ffcad558cfdd3dcaeb9 Mon Sep 17 00:00:00 2001
+From 606f31e8e3bebb9f5a5fb0c5237a67d85c46bfc4 Mon Sep 17 00:00:00 2001
 From: Ryan Volz <ryan.volz@gmail.com>
 Date: Tue, 15 Sep 2020 15:33:14 -0400
 Subject: [PATCH] cmake: Modify to make shared library build possible.
 
 ---
- CMakeLists.txt | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+ CMakeLists.txt | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 140910b..9728576 100755
+index 140910b..ad92bbd 100755
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -15,7 +15,11 @@ INCLUDE_DIRECTORIES ( include )
@@ -24,7 +24,18 @@ index 140910b..9728576 100755
  ELSE (WIN32)
    IF (APPLE)
      ADD_DEFINITIONS ( -DNDEBUG -DLOG4CPP_HAVE_SSTREAM )
-@@ -97,4 +101,6 @@ INSTALL (
+@@ -82,7 +86,9 @@ ADD_LIBRARY ( ${LOG4CPP_LIBRARY_NAME}
+ 
+ IF (WIN32)
+   TARGET_LINK_LIBRARIES (${LOG4CPP_LIBRARY_NAME} kernel32 user32 ws2_32 advapi32 )
+-  SET_TARGET_PROPERTIES(${LOG4CPP_LIBRARY_NAME} PROPERTIES LINK_FLAGS /NODEFAULTLIB:msvcrt )
++  IF (NOT BUILD_SHARED_LIBS)
++    SET_TARGET_PROPERTIES(${LOG4CPP_LIBRARY_NAME} PROPERTIES LINK_FLAGS /NODEFAULTLIB:msvcrt )
++  ENDIF (NOT BUILD_SHARED_LIBS)
+ ENDIF (WIN32)
+ 
+ INSTALL (
+@@ -97,4 +103,6 @@ INSTALL (
  INSTALL (
    TARGETS ${LOG4CPP_LIBRARY_NAME}
    ARCHIVE DESTINATION lib
