@@ -1,0 +1,36 @@
+From b7a4741257dfb18fc0198ffcad558cfdd3dcaeb9 Mon Sep 17 00:00:00 2001
+From: Ryan Volz <ryan.volz@gmail.com>
+Date: Tue, 15 Sep 2020 15:33:14 -0400
+Subject: [PATCH] cmake: Modify to make shared library build possible.
+
+---
+ CMakeLists.txt | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 140910b..9728576 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,7 +15,11 @@ INCLUDE_DIRECTORIES ( include )
+ INCLUDE_DIRECTORIES ( . )
+ 
+ IF (WIN32)
+-  ADD_DEFINITIONS ( -D_CRT_SECURE_NO_WARNINGS )
++  IF (BUILD_SHARED_LIBS)
++    ADD_DEFINITIONS ( -D_CRT_SECURE_NO_WARNINGS -DLOG4CPP_HAS_DLL -DLOG4CPP_BUILD_DLL )
++  ELSE (BUILD_SHARED_LIBS)
++    ADD_DEFINITIONS ( -D_CRT_SECURE_NO_WARNINGS )
++  ENDIF (BUILD_SHARED_LIBS)
+ ELSE (WIN32)
+   IF (APPLE)
+     ADD_DEFINITIONS ( -DNDEBUG -DLOG4CPP_HAVE_SSTREAM )
+@@ -97,4 +101,6 @@ INSTALL (
+ INSTALL (
+   TARGETS ${LOG4CPP_LIBRARY_NAME}
+   ARCHIVE DESTINATION lib
++  LIBRARY DESTINATION lib
++  RUNTIME DESTINATION bin
+   )
+-- 
+2.20.1
+

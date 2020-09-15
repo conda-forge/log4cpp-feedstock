@@ -11,6 +11,7 @@ source:
   sha256: 2cbbea55a5d6895c9f0116a9a9ce3afb86df383cd05c9d6c1a4238e5e5c8f51d
   patches:
     - osx_remove_manual_test.patch  # [osx]
+    - 0001-cmake-Modify-to-make-shared-library-build-possible.patch
 
 build:
   number: 1002
@@ -30,6 +31,7 @@ test:
     - test -f "${PREFIX}/lib/liblog4cpp.a"  # [unix]
     - test -f "${PREFIX}/lib/liblog4cpp${SHLIB_EXT}"  # [unix]
     - if not exist %PREFIX%\\Library\\include\\log4cpp\\Category.hh exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\bin\\log4cpp.dll exit 1  # [win]
     - if not exist %PREFIX%\\Library\\lib\\log4cpp.lib exit 1  # [win]
     - log4cpp-config --help  # [not win]
 
