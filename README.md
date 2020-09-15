@@ -153,4 +153,5 @@ Feedstock Maintainers
 =====================
 
 * [@marcelotrevisani](https://github.com/marcelotrevisani/)
+* [@ryanvolz](https://github.com/ryanvolz/)
 
