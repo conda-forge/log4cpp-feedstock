@@ -3,7 +3,7 @@ About log4cpp
 
 Home: http://log4cpp.sourceforge.net
 
-Package license: LGPL-2.1
+Package license: LGPL-2.1-or-later
 
 Feedstock license: BSD-3-Clause
 
