@@ -13,7 +13,7 @@ source:
     - osx_remove_manual_test.patch  # [osx]
 
 build:
-  number: 1001
+  number: 1002
 
 requirements:
   build:
@@ -32,8 +32,6 @@ test:
     - if not exist %PREFIX%\\Library\\include\\log4cpp\\Category.hh exit 1  # [win]
     - if not exist %PREFIX%\\Library\\lib\\log4cpp.lib exit 1  # [win]
     - log4cpp-config --help  # [not win]
-    - conda inspect linkages -p $PREFIX log4cpp  # [not win]
-    - conda inspect objects -p $PREFIX log4cpp  # [osx]
 
 about:
   home: http://log4cpp.sourceforge.net
