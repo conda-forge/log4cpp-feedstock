@@ -14,7 +14,7 @@ source:
     - 0001-cmake-Modify-to-make-shared-library-build-possible.patch
 
 build:
-  number: 1002
+  number: 1003
   run_exports:
     # https://abi-laboratory.pro/index.php?view=timeline&l=log4cpp
     - {{ pin_subpackage('log4cpp', max_pin='x.x') }}
@@ -32,7 +32,7 @@ requirements:
 test:
   commands:
     - test -f "${PREFIX}/include/log4cpp/Category.hh"  # [unix]
-    - test -f "${PREFIX}/lib/liblog4cpp.a"  # [unix]
+    - test ! -f "${PREFIX}/lib/liblog4cpp.a"  # [unix]
     - test -f "${PREFIX}/lib/liblog4cpp${SHLIB_EXT}"  # [unix]
     - if not exist %PREFIX%\\Library\\include\\log4cpp\\Category.hh exit 1  # [win]
     - if not exist %PREFIX%\\Library\\bin\\log4cpp.dll exit 1  # [win]

@@ -11,3 +11,6 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
 make check
 fi
 make install
+
+# don't install static library
+rm -f "$PREFIX/lib/liblog4cpp.a"
