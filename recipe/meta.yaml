@@ -10,8 +10,8 @@ source:
   url: https://sourceforge.net/projects/{{ name }}/files/{{ name }}-1.1.x%20%28new%29/{{ name }}-1.1/{{ name }}-{{ version }}.tar.gz
   sha256: 696113659e426540625274a8b251052cc04306d8ee5c42a0c7639f39ca90c9d6
   patches:
-    - osx_remove_manual_test.patch  # [osx]
     - 0001-cmake-Modify-to-make-shared-library-build-possible.patch
+    - 0002-Remove-manual-tests-broken-on-OSX.patch  # [osx]
 
 build:
   number: 0
