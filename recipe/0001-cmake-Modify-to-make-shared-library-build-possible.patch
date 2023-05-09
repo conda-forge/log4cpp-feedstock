@@ -1,4 +1,4 @@
-From 606f31e8e3bebb9f5a5fb0c5237a67d85c46bfc4 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Ryan Volz <ryan.volz@gmail.com>
 Date: Tue, 15 Sep 2020 15:33:14 -0400
 Subject: [PATCH] cmake: Modify to make shared library build possible.
@@ -43,5 +43,5 @@ index 140910b..ad92bbd 100755
 +  RUNTIME DESTINATION bin
    )
 -- 
-2.20.1
+2.40.0
 
