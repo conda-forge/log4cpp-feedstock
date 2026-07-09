@@ -14,7 +14,7 @@ source:
     - 0002-Remove-manual-tests-broken-on-OSX.patch  # [osx]
 
 build:
-  number: 0
+  number: 1
   run_exports:
     # https://abi-laboratory.pro/index.php?view=timeline&l=log4cpp
     - {{ pin_subpackage('log4cpp', max_pin='x.x') }}
